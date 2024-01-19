@@ -1,2 +1,2 @@
 # DBF2SQL
-DBase To SQL
+DBase (.DBF File) To SQL Server
