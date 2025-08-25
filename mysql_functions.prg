@@ -662,8 +662,15 @@ ENDFUNC
 FUNCTION GuardarError
     LPARAMETERS P_DscErr, P_DetErr, P_DetErr2, P_CdgUsu
     IF !USED('F_Errores')
-        VLc_Ruta = VGc_Unidad+"\Systems\NT_Pos\Data\PMS_Errores"
-        USE &VLc_Ruta IN 0 ALIAS F_Errores ORDER CdgErr SHARED AGAIN
+        lcDir  = ADDBS(CURDIR()) + "Data"
+        IF !DIRECTORY(lcDir)
+            MD (lcDir)
+        ENDIF
+        lcFile = ADDBS(lcDir) + "PMS_Errores.dbf"
+        IF !FILE(lcFile) .AND. VARTYPE('CrearTablaErrores') = 'P'
+            CrearTablaErrores(lcDir)
+        ENDIF
+        USE (lcFile) IN 0 ALIAS F_Errores ORDER CdgErr SHARED AGAIN
     ENDIF
     SELECT F_Errores
         GO BOTTOM

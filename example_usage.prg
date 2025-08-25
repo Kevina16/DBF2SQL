@@ -1,7 +1,7 @@
 * Ejemplo de uso de mysql_functions.prg
 SET PROCEDURE TO mysql_functions, create_error_table ADDITIVE
 
-* Crear tabla de registro de errores si no existe
+* Crear tabla de registro de errores si no existe (se guardará en Data)
 CrearTablaErrores()
 
 * Cadena de conexión al servidor MySQL

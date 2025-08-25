@@ -5,12 +5,16 @@
 *   SET PROCEDURE TO create_error_table ADDITIVE
 *   CrearTablaErrores([tcDir])
 *
-* Si no se proporciona un directorio, se usa el directorio actual.
-*
+* Si no se proporciona un directorio, se usa la carpeta "Data" en el
+* proyecto. Se crea si no existe.
+
 FUNCTION CrearTablaErrores
     LPARAMETERS tcDir
     IF EMPTY(tcDir)
-        tcDir = CURDIR()
+        tcDir = ADDBS(CURDIR()) + "Data"
+    ENDIF
+    IF !DIRECTORY(tcDir)
+        MD (tcDir)
     ENDIF
     lcFile = ADDBS(tcDir) + "PMS_Errores.dbf"
 

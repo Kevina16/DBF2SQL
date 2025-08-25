@@ -19,14 +19,14 @@ datos y mantener registros.
 - `Eliminar_Registro_MySQL(pTabla_DBF, pTabla_MySQL, pCamposWhere)` – Elimina registros.
 - `SafeTrim(vValue)` – Quita espacios de valores de tipo carácter.
 - `GuardarError(...)` – Registra detalles de errores en un archivo DBF.
-- `CrearTablaErrores([dir])` – Genera la tabla `PMS_Errores.dbf` utilizada por `GuardarError`.
+- `CrearTablaErrores([dir])` – Genera la tabla `PMS_Errores.dbf` utilizada por `GuardarError` (por defecto en la carpeta `Data`).
 
 ## Ejemplo de uso
 
 ```xbase
 SET PROCEDURE TO mysql_functions, create_error_table ADDITIVE
 
-* Crear tabla de errores si no existe
+* Crear tabla de errores si no existe (se almacenará en Data)
 CrearTablaErrores()
 
 * Cadena de conexión para MySQL
