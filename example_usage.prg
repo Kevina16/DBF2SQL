@@ -1,8 +1,10 @@
 * Ejemplo de uso de mysql_functions.prg
 SET PROCEDURE TO mysql_functions, create_error_table ADDITIVE
 
-* Crear tabla de registro de errores si no existe (se guardará en Data)
-CrearTablaErrores()
+* Obtener directorio de datos (crea "Data" si no existe)
+lcDataDir = ObtenerDataDir()
+* Crear tabla de registro de errores si no existe (se guardará en lcDataDir)
+CrearTablaErrores(lcDataDir)
 
 * Cadena de conexión al servidor MySQL
 VLc_Conexion = "Driver={MySQL ODBC 8.0 Driver};Server=localhost;Database=test;Uid=user;Pwd=password;"

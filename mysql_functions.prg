@@ -662,10 +662,7 @@ ENDFUNC
 FUNCTION GuardarError
     LPARAMETERS P_DscErr, P_DetErr, P_DetErr2, P_CdgUsu
     IF !USED('F_Errores')
-        lcDir  = ADDBS(CURDIR()) + "Data"
-        IF !DIRECTORY(lcDir)
-            MD (lcDir)
-        ENDIF
+        lcDir = ObtenerDataDir()
         lcFile = ADDBS(lcDir) + "PMS_Errores.dbf"
         IF !FILE(lcFile) .AND. VARTYPE('CrearTablaErrores') = 'P'
             CrearTablaErrores(lcDir)
